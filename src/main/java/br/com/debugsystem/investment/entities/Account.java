@@ -1,10 +1,8 @@
 package br.com.debugsystem.investment.entities;
 
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,7 +16,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_account")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Account {
 
     @Id
@@ -37,11 +34,10 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
-    //@JsonBackReference
     private Client client;
 
-    @OneToMany(mappedBy = "account", targetEntity = Purchase.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //@JsonManagedReference
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"account", "purchases"})
     private List<Purchase> purchases;
 
     public Account() {
