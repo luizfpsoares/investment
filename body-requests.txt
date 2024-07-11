@@ -1,0 +1,42 @@
+New active
+{
+    "name": "Bradesco PN EJ N1 SA",
+    "code": "BBDC4F"
+}
+
+
+New client
+{
+    "name": "Ingrid Lucia Soares",
+    "surname": "de Sousa",
+    "cpf": "000.000.000-00",
+    "date_of_birth": "29/11/2000",
+    "email": "ingridlucia@gmail.com"
+}
+
+
+New account
+{
+    "type": "Standard",
+    "balance": 0,
+    "dt_opening": "11/07/2024",
+    "client": {
+            "id": "2"
+    }
+}
+
+
+New purchase
+{
+    "dt_purchase": "11-07-2024",
+    "purchase_price": 12.66,
+    "quantity": 14,
+    "origin_aport": "standard",
+    "active": {
+        "id": 4
+    },
+    "account": {
+        "id": 2
+    }
+}
+

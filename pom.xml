@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.debugsystem</groupId>
 	<artifactId>investment</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>investment</name>
 	<description>Finance control project api</description>
 	<url/>
