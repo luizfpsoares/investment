@@ -2,6 +2,7 @@ package br.com.debugsystem.investment.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,6 +39,7 @@ public class Account {
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"account", "purchases"})
+    @JsonIgnore
     private List<Purchase> purchases;
 
     public Account() {
@@ -86,7 +88,7 @@ public class Account {
         this.client = client;
     }
 
-    public void updateBalance(Long value) {
+    public void updateBalance(Double value) {
         this.balance += value;
     }
 

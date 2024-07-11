@@ -24,7 +24,7 @@ public class PurchaseService {
     }
 
     public void savePurchase(Purchase purchase) {
-        Long value = purchase.getQuantity() * purchase.getPurchase_price();
+        Double value = purchase.getQuantity() * purchase.getPurchase_price();
 
         logger.info("Valor da conta na compra: {}", purchase.getAccount());
 

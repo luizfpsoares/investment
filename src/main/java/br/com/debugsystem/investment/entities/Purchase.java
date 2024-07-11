@@ -24,7 +24,7 @@ public class Purchase {
     private String dt_purchase;
 
     @Column(nullable = false)
-    private Long purchase_price;
+    private Double purchase_price;
 
     @Column(nullable = false)
     private Long quantity;
@@ -44,7 +44,7 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(String dt_purchase, Long purchase_price, Long quantity, String origin_aport, Active active,
+    public Purchase(String dt_purchase, Double purchase_price, Long quantity, String origin_aport, Active active,
             Account account) {
         this.dt_purchase = dt_purchase;
         this.purchase_price = purchase_price;
@@ -66,11 +66,11 @@ public class Purchase {
         this.dt_purchase = dt_purchase;
     }
 
-    public Long getPurchase_price() {
+    public Double getPurchase_price() {
         return purchase_price;
     }
 
-    public void setPurchase_price(Long purchase_price) {
+    public void setPurchase_price(Double purchase_price) {
         this.purchase_price = purchase_price;
     }
 

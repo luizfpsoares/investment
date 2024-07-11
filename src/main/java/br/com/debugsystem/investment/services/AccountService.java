@@ -29,7 +29,7 @@ public class AccountService {
         accountRepository.deleteById(id);
     }
 
-    public void updateBalance(Account account, Long value) {
+    public void updateBalance(Account account, Double value) {
         Account exist = accountRepository.findById(account.getId()).orElseThrow();
         exist.updateBalance(value);
         accountRepository.save(exist);

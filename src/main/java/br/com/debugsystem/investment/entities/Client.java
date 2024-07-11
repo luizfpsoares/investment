@@ -1,6 +1,8 @@
 package br.com.debugsystem.investment.entities;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -38,6 +40,7 @@ public class Client {
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("client")
+    @JsonIgnore
     private List<Account> accounts;
 
     public Client() {
