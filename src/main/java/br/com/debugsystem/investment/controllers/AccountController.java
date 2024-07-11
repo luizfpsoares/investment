@@ -14,7 +14,7 @@ import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.services.AccountService;
 
 @RestController
-@RequestMapping(path = "/api/v1/account")
+@RequestMapping(path = "/api/v1/accounts")
 public class AccountController {
     
     @Autowired

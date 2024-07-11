@@ -1,5 +1,7 @@
 package br.com.debugsystem.investment.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +16,17 @@ import br.com.debugsystem.investment.entities.Purchase;
 import br.com.debugsystem.investment.services.PurchaseService;
 
 @RestController
-@RequestMapping(path = "/api/v1/purchase")
+@RequestMapping(path = "/api/v1/purchases")
 public class PurchaseController {
     
     @Autowired
     public PurchaseService purchaseService;
+
+    @GetMapping
+    public ResponseEntity<List<Purchase>> findAll(){
+        List<Purchase> allPurchases = purchaseService.findAll();
+        return new ResponseEntity<>(allPurchases, HttpStatus.OK);
+    }
     
     @GetMapping("{id}")
     public ResponseEntity<Purchase> getPurchase(@PathVariable Long id) {

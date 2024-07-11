@@ -1,5 +1,7 @@
 package br.com.debugsystem.investment.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,10 @@ public class ActiveService {
 
     @Autowired
     private ActiveRepository activeRepository;
+
+    public List<Active> findAll(){
+        return activeRepository.findAll();
+    }
 
     public Active getById(Long id) {
         return activeRepository.findById(id).orElseThrow();

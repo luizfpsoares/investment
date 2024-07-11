@@ -14,7 +14,7 @@ import br.com.debugsystem.investment.entities.Client;
 import br.com.debugsystem.investment.services.ClientService;
 
 @RestController
-@RequestMapping(path = "/api/v1/client")
+@RequestMapping(path = "/api/v1/clients")
 public class ClientController {
     
     @Autowired

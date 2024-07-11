@@ -1,5 +1,7 @@
 package br.com.debugsystem.investment.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +17,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping(path = "/api/v1/active")
+@RequestMapping(path = "/api/v1/actives")
 public class ActiveController {
     
     @Autowired
     public ActiveService activeService;
+
+    @GetMapping
+    public ResponseEntity<List<Active>> findAll(){
+        List<Active> allActives = activeService.findAll();
+        return new ResponseEntity<>(allActives, HttpStatus.OK);
+    }
     
     @GetMapping("{id}")
     public ResponseEntity<Active> getActive(@PathVariable Long id) {

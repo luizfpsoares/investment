@@ -1,5 +1,7 @@
 package br.com.debugsystem.investment.services;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,10 @@ public class PurchaseService {
 
     @Autowired
     private AccountService accountService;
+
+     public List<Purchase> findAll(){
+        return purchaseRepository.findAll();
+    }
 
     public Purchase getById(Long id) {
         return purchaseRepository.findById(id).orElseThrow();
