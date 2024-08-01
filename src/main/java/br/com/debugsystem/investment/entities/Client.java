@@ -33,7 +33,7 @@ public class Client {
     private String cpf;
 
     @Column(nullable = false)
-    private String date_of_birth;
+    private String dateOfBirth;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -46,11 +46,11 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name, String surname, String cpf, String date_of_birth, String email) {
+    public Client(String name, String surname, String cpf, String dateOfBirth, String email) {
         this.name = name;
         this.surname = surname;
         this.cpf = cpf;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.email = email;
     }
 
@@ -82,12 +82,12 @@ public class Client {
         this.cpf = cpf;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getdateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setdateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmail() {

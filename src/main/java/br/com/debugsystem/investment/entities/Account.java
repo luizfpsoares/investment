@@ -31,7 +31,7 @@ public class Account {
     private Double balance;
     
     @Column(nullable = false)
-    private String dt_opening;
+    private String dtOpening;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -45,10 +45,10 @@ public class Account {
     public Account() {
     }
 
-    public Account(String type, Double balance, String dt_opening, Client client) {
+    public Account(String type, Double balance, String dtOpening, Client client) {
         this.type = type;
         this.balance = balance;
-        this.dt_opening = dt_opening;
+        this.dtOpening = dtOpening;
         this.client = client;
     }
 
@@ -72,12 +72,12 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getDt_opening() {
-        return dt_opening;
+    public String getdtOpening() {
+        return dtOpening;
     }
 
-    public void setDt_opening(String dt_opening) {
-        this.dt_opening = dt_opening;
+    public void setdtOpening(String dtOpening) {
+        this.dtOpening = dtOpening;
     }
 
     public Client getClient() {
