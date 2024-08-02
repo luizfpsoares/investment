@@ -21,16 +21,16 @@ public class Purchase {
     private Long id;
 
     @Column(nullable = false)
-    private String dt_purchase;
+    private String dtPurchase;
 
     @Column(nullable = false)
-    private Double purchase_price;
+    private Double purchasePrice;
 
     @Column(nullable = false)
     private Long quantity;
 
     @Column(nullable = false)
-    private String origin_aport;
+    private String originAport;
 
     @ManyToOne
     @JoinColumn(name = "active_id", nullable = false)
@@ -44,12 +44,12 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(String dt_purchase, Double purchase_price, Long quantity, String origin_aport, Active active,
+    public Purchase(String dtPurchase, Double purchasePrice, Long quantity, String originAport, Active active,
             Account account) {
-        this.dt_purchase = dt_purchase;
-        this.purchase_price = purchase_price;
+        this.dtPurchase = dtPurchase;
+        this.purchasePrice = purchasePrice;
         this.quantity = quantity;
-        this.origin_aport = origin_aport;
+        this.originAport = originAport;
         this.active = active;
         this.account = account;
     }
@@ -58,20 +58,20 @@ public class Purchase {
         return id;
     }
 
-    public String getDt_purchase() {
-        return dt_purchase;
+    public String getdtPurchase() {
+        return dtPurchase;
     }
 
-    public void setDt_purchase(String dt_purchase) {
-        this.dt_purchase = dt_purchase;
+    public void setdtPurchase(String dtPurchase) {
+        this.dtPurchase = dtPurchase;
     }
 
-    public Double getPurchase_price() {
-        return purchase_price;
+    public Double getPurchasePrice() {
+        return purchasePrice;
     }
 
-    public void setPurchase_price(Double purchase_price) {
-        this.purchase_price = purchase_price;
+    public void setPurchasePrice(Double purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public Long getQuantity() {
@@ -82,12 +82,12 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    public String getOrigin_aport() {
-        return origin_aport;
+    public String getoriginAport() {
+        return originAport;
     }
 
-    public void setOrigin_aport(String origin_aport) {
-        this.origin_aport = origin_aport;
+    public void setoriginAport(String originAport) {
+        this.originAport = originAport;
     }
 
     public Active getActive() {
