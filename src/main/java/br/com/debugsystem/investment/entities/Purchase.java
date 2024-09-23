@@ -2,8 +2,12 @@ package br.com.debugsystem.investment.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import br.com.debugsystem.investment.enums.OriginApportEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,8 +33,9 @@ public class Purchase {
     @Column(nullable = false)
     private Long quantity;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String originAport;
+    private OriginApportEnum originAport;
 
     @ManyToOne
     @JoinColumn(name = "active_id", nullable = false)
@@ -44,7 +49,7 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(String dtPurchase, Double purchasePrice, Long quantity, String originAport, Active active,
+    public Purchase(String dtPurchase, Double purchasePrice, Long quantity, OriginApportEnum originAport, Active active,
             Account account) {
         this.dtPurchase = dtPurchase;
         this.purchasePrice = purchasePrice;
@@ -82,11 +87,11 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    public String getoriginAport() {
+    public OriginApportEnum getoriginAport() {
         return originAport;
     }
 
-    public void setoriginAport(String originAport) {
+    public void setoriginAport(OriginApportEnum originAport) {
         this.originAport = originAport;
     }
 

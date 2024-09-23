@@ -4,8 +4,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.com.debugsystem.investment.enums.TypeAccountEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,8 +28,9 @@ public class Account {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String type;
+    private TypeAccountEnum type;
     
     @Column(nullable = false)
     private Double balance;
@@ -45,7 +50,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(String type, Double balance, String dtOpening, Client client) {
+    public Account(TypeAccountEnum type, Double balance, String dtOpening, Client client) {
         this.type = type;
         this.balance = balance;
         this.dtOpening = dtOpening;
@@ -56,11 +61,11 @@ public class Account {
         return id;
     }
 
-    public String getType() {
+    public TypeAccountEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeAccountEnum type) {
         this.type = type;
     }
 
