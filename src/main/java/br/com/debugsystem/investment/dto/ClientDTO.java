@@ -15,7 +15,7 @@ public class ClientDTO {
         name = client.getName();
         surname = client.getSurname();
         cpf = client.getCpf();
-        dateOfBirth = client.getdateOfBirth();
+        dateOfBirth = client.getDateOfBirth();
         email = client.getEmail();
     }
 

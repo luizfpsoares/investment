@@ -87,11 +87,11 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    public OriginApportEnum getoriginAport() {
+    public OriginApportEnum getOriginAport() {
         return originAport;
     }
 
-    public void setoriginAport(OriginApportEnum originAport) {
+    public void setOriginAport(OriginApportEnum originAport) {
         this.originAport = originAport;
     }
 

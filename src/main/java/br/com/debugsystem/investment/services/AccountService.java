@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.debugsystem.investment.entities.Account;
+import br.com.debugsystem.investment.enums.OriginApportEnum;
+import br.com.debugsystem.investment.enums.TypeAccountEnum;
 import br.com.debugsystem.investment.infra.AccountRepository;
 
 @Service
@@ -29,10 +31,15 @@ public class AccountService {
         accountRepository.deleteById(id);
     }
 
-    public void updateBalance(Account account, Double value) {
+    public void updateBalance(Account account, Double value, OriginApportEnum originApport) {
         Account exist = accountRepository.findById(account.getId()).orElseThrow();
         exist.updateBalance(value);
-        accountRepository.save(exist);
+        if (originApport == OriginApportEnum.MONTHLY) {
+            exist.updateBalanceMonthlyApportOnly(value);
+            accountRepository.save(exist); 
+        }
+        else
+            accountRepository.save(exist);
     }
 
 }

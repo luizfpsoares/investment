@@ -38,6 +38,9 @@ public class Client {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("client")
     @JsonIgnore
@@ -46,12 +49,13 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name, String surname, String cpf, String dateOfBirth, String email) {
+    public Client(String name, String surname, String cpf, String dateOfBirth, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.cpf = cpf;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -82,11 +86,11 @@ public class Client {
         this.cpf = cpf;
     }
 
-    public String getdateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setdateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -96,6 +100,14 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Account> getAccounts() {

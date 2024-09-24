@@ -34,6 +34,9 @@ public class Account {
     
     @Column(nullable = false)
     private Double balance;
+
+    @Column(name = "balance_monthly_apport_only", nullable = false)
+    private Double balanceMonthlyApportOnly;
     
     @Column(nullable = false)
     private String dtOpening;
@@ -50,9 +53,10 @@ public class Account {
     public Account() {
     }
 
-    public Account(TypeAccountEnum type, Double balance, String dtOpening, Client client) {
+    public Account(TypeAccountEnum type, Double balance, Double balanceMonthlyApportOnly, String dtOpening, Client client) {
         this.type = type;
         this.balance = balance;
+        this.balanceMonthlyApportOnly = balanceMonthlyApportOnly;
         this.dtOpening = dtOpening;
         this.client = client;
     }
@@ -77,11 +81,19 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getdtOpening() {
+    public Double getBalanceMonthlyApportOnly() {
+        return balanceMonthlyApportOnly;
+    }
+
+    public void setBalanceMonthlyApportOnly(Double balanceMonthlyApportOnly) {
+        this.balanceMonthlyApportOnly = balanceMonthlyApportOnly;
+    }
+
+    public String getDtOpening() {
         return dtOpening;
     }
 
-    public void setdtOpening(String dtOpening) {
+    public void setDtOpening(String dtOpening) {
         this.dtOpening = dtOpening;
     }
 
@@ -97,6 +109,11 @@ public class Account {
         this.balance += value;
     }
 
+    public void updateBalanceMonthlyApportOnly(Double value) {
+        this.balanceMonthlyApportOnly += value;
+    }
+
+
     public List<Purchase> getPurchases() {
         return purchases;
     }
@@ -104,6 +121,5 @@ public class Account {
     public void setPurchases(List<Purchase> purchases) {
         this.purchases = purchases;
     }
-
   
 }
