@@ -31,7 +31,7 @@ public class Purchase {
     private Double purchasePrice;
 
     @Column(nullable = false)
-    private Long quantity;
+    private Double quantity;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -49,7 +49,7 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(String dtPurchase, Double purchasePrice, Long quantity, OriginApportEnum originAport, Active active,
+    public Purchase(String dtPurchase, Double purchasePrice, Double quantity, OriginApportEnum originAport, Active active,
             Account account) {
         this.dtPurchase = dtPurchase;
         this.purchasePrice = purchasePrice;
@@ -79,11 +79,11 @@ public class Purchase {
         this.purchasePrice = purchasePrice;
     }
 
-    public Long getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
