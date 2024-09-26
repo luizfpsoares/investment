@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.debugsystem.investment.dto.ClientDTO;
+import br.com.debugsystem.investment.dtos.ClientDTO;
 import br.com.debugsystem.investment.entities.Client;
 import br.com.debugsystem.investment.services.ClientService;
 
@@ -23,9 +23,8 @@ public class ClientController {
     
     @GetMapping("{id}")
     public ResponseEntity<ClientDTO> getClient(@PathVariable Long id) {
-        Client byId = clientService.getById(id);
-        ClientDTO clientDTO = new ClientDTO(byId);
-        return ResponseEntity.ok(clientDTO);
+        ClientDTO byId = clientService.getById(id);
+        return ResponseEntity.ok(byId);
     }
 
     @PostMapping

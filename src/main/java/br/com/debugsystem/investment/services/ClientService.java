@@ -1,8 +1,12 @@
 package br.com.debugsystem.investment.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.debugsystem.investment.dtos.ClientDTO;
 import br.com.debugsystem.investment.entities.Client;
 import br.com.debugsystem.investment.infra.ClientRepository;
 
@@ -12,8 +16,9 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client getById(Long id) {
-        return clientRepository.findById(id).orElseThrow();
+    public ClientDTO getById(Long id) {
+        Client client = clientRepository.findById(id).orElseThrow();
+        return convertToDTO(client);
     }
 
     public void saveClient(Client client) {
@@ -30,6 +35,22 @@ public class ClientService {
 
     public void deleteById(Long id) {
         clientRepository.deleteById(id);
+    }
+
+    private ClientDTO convertToDTO(Client client) {
+        List<Long> accountIds = client.getAccounts().stream()
+            .map(account -> account.getId())
+            .collect(Collectors.toList());
+
+        return new ClientDTO(
+            client.getId(),
+            client.getName(),
+            client.getSurname(),
+            client.getCpf(),
+            client.getDateOfBirth(),
+            client.getEmail(),
+            accountIds
+        );
     }
 
 }

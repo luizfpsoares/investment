@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.debugsystem.investment.dtos.AccountDTO;
 import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.services.AccountService;
 
@@ -21,8 +22,8 @@ public class AccountController {
     public AccountService accountService;
 
     @GetMapping("{id}")
-    public ResponseEntity<Account> getAccount(@PathVariable Long id) {
-        Account byId = accountService.getById(id);
+    public ResponseEntity<AccountDTO> getAccount(@PathVariable Long id) {
+        AccountDTO byId = accountService.getById(id);
         return ResponseEntity.ok(byId);
     }
 
