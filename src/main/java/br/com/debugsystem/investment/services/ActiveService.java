@@ -1,10 +1,14 @@
 package br.com.debugsystem.investment.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.debugsystem.investment.dtos.AccountDTO;
+import br.com.debugsystem.investment.dtos.ActiveDTO;
+import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.entities.Active;
 import br.com.debugsystem.investment.infra.ActiveRepository;
 
@@ -18,8 +22,9 @@ public class ActiveService {
         return activeRepository.findAll();
     }
 
-    public Active getById(Long id) {
-        return activeRepository.findById(id).orElseThrow();
+    public ActiveDTO getById(Long id) {
+        Active active = activeRepository.findById(id).orElseThrow();
+        return convertToDTO(active);
     }
 
     public void saveActive(Active active) {
@@ -35,5 +40,14 @@ public class ActiveService {
 
     public void deleteById(Long id) {
         activeRepository.deleteById(id);
+    }
+
+    private ActiveDTO convertToDTO(Active active) {
+        return new ActiveDTO(
+            active.getId(),
+            active.getName(),
+            active.getCode(),
+            active.getAccountType().toString()
+        );
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.debugsystem.investment.dtos.ActiveDTO;
 import br.com.debugsystem.investment.entities.Active;
 import br.com.debugsystem.investment.services.ActiveService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +31,8 @@ public class ActiveController {
     }
     
     @GetMapping("{id}")
-    public ResponseEntity<Active> getActive(@PathVariable Long id) {
-        Active byId = activeService.getById(id);
+    public ResponseEntity<ActiveDTO> getActive(@PathVariable Long id) {
+        ActiveDTO byId = activeService.getById(id);
         return ResponseEntity.ok(byId);
     }
 
