@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -42,5 +44,10 @@ public class ActiveController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
+    @PutMapping("{id}")
+    public ResponseEntity<Void> putMethodName(@PathVariable Long id, @RequestBody Active active) {
+        activeService.updateActive(active, id);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.debugsystem.investment.dtos.AccountDTO;
 import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.services.AccountService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping(path = "/api/v1/accounts")
@@ -30,6 +32,12 @@ public class AccountController {
     @PostMapping
     public ResponseEntity<Void> save(@RequestBody Account account) {
         accountService.saveAccount(account);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Void> putMethodName(@PathVariable Long id, @RequestBody Account active) {
+        accountService.updateAccount(active, id);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

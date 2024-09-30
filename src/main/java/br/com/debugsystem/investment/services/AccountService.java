@@ -8,6 +8,7 @@ import br.com.debugsystem.investment.dtos.ClientSummaryDTO;
 import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.enums.OriginApportEnum;
 import br.com.debugsystem.investment.infra.AccountRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class AccountService {
@@ -16,7 +17,7 @@ public class AccountService {
     private AccountRepository accountRepository;
 
     public AccountDTO getById(Long id) {
-        Account account = accountRepository.findById(id).orElseThrow();
+        Account account = accountRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Account not found with id: " + id));
         return convertToDTO(account);
     }
 
@@ -25,7 +26,7 @@ public class AccountService {
     }
 
     public void updateAccount(Account account, Long id) {
-        Account exist = accountRepository.findById(id).orElseThrow();
+        Account exist = accountRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Account not found with id: " + id));
         exist.setType(account.getType());
     }
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.debugsystem.investment.dtos.ClientDTO;
 import br.com.debugsystem.investment.entities.Client;
 import br.com.debugsystem.investment.infra.ClientRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ClientService {
@@ -17,7 +18,7 @@ public class ClientService {
     private ClientRepository clientRepository;
 
     public ClientDTO getById(Long id) {
-        Client client = clientRepository.findById(id).orElseThrow();
+        Client client = clientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id));
         return convertToDTO(client);
     }
 
@@ -26,7 +27,7 @@ public class ClientService {
     }
 
     public void updateCLient(Client client, Long id) {
-        Client exist = clientRepository.findById(id).orElseThrow();
+        Client exist = clientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id));
         exist.setName(client.getName());
         exist.setSurname(client.getSurname());
         exist.setEmail(client.getEmail());

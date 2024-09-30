@@ -12,6 +12,7 @@ import br.com.debugsystem.investment.dtos.AccountSummaryDTO;
 import br.com.debugsystem.investment.dtos.PurchaseDTO;
 import br.com.debugsystem.investment.entities.Purchase;
 import br.com.debugsystem.investment.infra.PurchaseRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PurchaseService {
@@ -30,7 +31,7 @@ public class PurchaseService {
     }
 
     public PurchaseDTO getById(Long id) {
-        Purchase purchase = purchaseRepository.findById(id).orElseThrow();
+        Purchase purchase = purchaseRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Purchase not found with id: " + id));
         return convertToDTO(purchase);
     }
 
@@ -44,7 +45,6 @@ public class PurchaseService {
     }
 
     private PurchaseDTO convertToDTO(Purchase purchase) {
-        //ClientSummaryDTO clientSummary = new ClientSummaryDTO(purchase.getAccount().getClient().getId(), purchase.getAccount().getClient().getName());
         AccountSummaryDTO accountSummary = new AccountSummaryDTO(purchase.getAccount().getId(), purchase.getAccount().getType().toString());
 
         return new PurchaseDTO(
