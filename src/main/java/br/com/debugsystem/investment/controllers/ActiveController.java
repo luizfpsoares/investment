@@ -25,8 +25,8 @@ public class ActiveController {
     public ActiveService activeService;
 
     @GetMapping
-    public ResponseEntity<List<Active>> findAll(){
-        List<Active> allActives = activeService.findAll();
+    public ResponseEntity<List<ActiveDTO>> findAll(){
+        List<ActiveDTO> allActives = activeService.findAll();
         return new ResponseEntity<>(allActives, HttpStatus.OK);
     }
     

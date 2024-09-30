@@ -6,9 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.debugsystem.investment.dtos.AccountDTO;
 import br.com.debugsystem.investment.dtos.ActiveDTO;
-import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.entities.Active;
 import br.com.debugsystem.investment.infra.ActiveRepository;
 
@@ -18,8 +16,9 @@ public class ActiveService {
     @Autowired
     private ActiveRepository activeRepository;
 
-    public List<Active> findAll(){
-        return activeRepository.findAll();
+    public List<ActiveDTO> findAll(){
+        List<Active> actives = activeRepository.findAll();
+        return actives.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
     public ActiveDTO getById(Long id) {

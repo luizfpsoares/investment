@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.debugsystem.investment.dtos.PurchaseDTO;
 import br.com.debugsystem.investment.entities.Purchase;
 import br.com.debugsystem.investment.services.PurchaseService;
 
@@ -23,14 +24,14 @@ public class PurchaseController {
     public PurchaseService purchaseService;
 
     @GetMapping
-    public ResponseEntity<List<Purchase>> findAll(){
-        List<Purchase> allPurchases = purchaseService.findAll();
+    public ResponseEntity<List<PurchaseDTO>> findAll(){
+        List<PurchaseDTO> allPurchases = purchaseService.findAll();
         return new ResponseEntity<>(allPurchases, HttpStatus.OK);
     }
     
     @GetMapping("{id}")
-    public ResponseEntity<Purchase> getPurchase(@PathVariable Long id) {
-        Purchase byId = purchaseService.getById(id);
+    public ResponseEntity<PurchaseDTO> getPurchase(@PathVariable Long id) {
+        PurchaseDTO byId = purchaseService.getById(id);
         return ResponseEntity.ok(byId);
     }
 
