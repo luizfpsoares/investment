@@ -30,7 +30,10 @@ public class ClientService {
         Client exist = clientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id));
         exist.setName(client.getName());
         exist.setSurname(client.getSurname());
+        exist.setCpf(client.getCpf());
+        exist.setDateOfBirth(client.getDateOfBirth());
         exist.setEmail(client.getEmail());
+        exist.setPassword(client.getPassword());
         clientRepository.save(exist);
     }
 

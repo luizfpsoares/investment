@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.debugsystem.investment.dtos.ClientDTO;
 import br.com.debugsystem.investment.entities.Client;
 import br.com.debugsystem.investment.services.ClientService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping(path = "/api/v1/clients")
@@ -30,6 +32,12 @@ public class ClientController {
     @PostMapping
     public ResponseEntity<Void> save(@RequestBody Client client) {
         clientService.saveClient(client);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Void> putMethodName(@PathVariable Long id, @RequestBody Client client) {
+        clientService.updateCLient(client, id);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
