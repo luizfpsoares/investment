@@ -41,7 +41,7 @@ public class ClientService {
         clientRepository.deleteById(id);
     }
 
-    private ClientDTO convertToDTO(Client client) {
+    public ClientDTO convertToDTO(Client client) {
         List<Long> accountIds = client.getAccounts().stream()
             .map(account -> account.getId())
             .collect(Collectors.toList());
