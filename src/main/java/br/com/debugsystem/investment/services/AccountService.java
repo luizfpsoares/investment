@@ -1,9 +1,13 @@
 package br.com.debugsystem.investment.services;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.debugsystem.investment.dtos.AccountDTO;
+import br.com.debugsystem.investment.dtos.AccountRequestDTO;
 import br.com.debugsystem.investment.dtos.ClientSummaryDTO;
 import br.com.debugsystem.investment.entities.Account;
 import br.com.debugsystem.investment.enums.OriginApportEnum;
@@ -21,7 +25,22 @@ public class AccountService {
         return convertToDTO(account);
     }
 
+    //LEGADO
     public void saveAccount(Account account) {
+        accountRepository.save(account);
+    }
+
+    public void createAccount(AccountRequestDTO accountRequest) {
+        Account account = new Account();
+
+        account.setType(accountRequest.getType());
+        account.setBalance(accountRequest.getBalance());
+        account.setBalanceMonthlyApportOnly(accountRequest.getBalanceMonthlyApportOnly());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String currentDate = LocalDate.now().format(formatter);
+        account.setDtOpening(currentDate);
+        account.setClient(accountRequest.getClient());
         accountRepository.save(account);
     }
 

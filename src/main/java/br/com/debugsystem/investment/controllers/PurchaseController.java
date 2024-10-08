@@ -37,7 +37,7 @@ public class PurchaseController {
 
     @PostMapping
     public ResponseEntity<Void> save(@RequestBody Purchase purchase) {
-        purchaseService.savePurchase(purchase);
+        purchaseService.makePurchase(purchase);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

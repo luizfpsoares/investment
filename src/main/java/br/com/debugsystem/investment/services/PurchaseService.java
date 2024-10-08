@@ -1,5 +1,7 @@
 package br.com.debugsystem.investment.services;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +43,26 @@ public class PurchaseService {
         //logger.info("Valor da conta na compra: {}", purchase.getAccount());
 
         accountService.updateBalance(purchase.getAccount(), value, purchase.getOriginAport());
+        purchaseRepository.save(purchase);
+    }
+
+    public void makePurchase(Purchase purchaseRequest) {
+        Purchase purchase = new Purchase();
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String currentDate = LocalDate.now().format(formatter);
+        purchase.setdtPurchase(currentDate);
+
+        purchase.setPurchasePrice(purchaseRequest.getPurchasePrice());
+        purchase.setQuantity(purchaseRequest.getQuantity());
+        purchase.setOriginAport(purchaseRequest.getOriginAport());
+        purchase.setActive(purchaseRequest.getActive());
+        purchase.setAccount(purchaseRequest.getAccount());
+
+        Double value = purchase.getQuantity() * purchase.getPurchasePrice();
+
+        accountService.updateBalance(purchase.getAccount(), value, purchase.getOriginAport());
+
         purchaseRepository.save(purchase);
     }
 
