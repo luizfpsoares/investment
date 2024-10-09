@@ -1,6 +1,6 @@
 package br.com.debugsystem.investment.services;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,8 +49,8 @@ public class PurchaseService {
     public void makePurchase(Purchase purchaseRequest) {
         Purchase purchase = new Purchase();
         
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String currentDate = LocalDate.now().format(formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm:ss.SSS");
+        String currentDate = LocalDateTime.now().format(formatter);
         purchase.setdtPurchase(currentDate);
 
         purchase.setPurchasePrice(purchaseRequest.getPurchasePrice());

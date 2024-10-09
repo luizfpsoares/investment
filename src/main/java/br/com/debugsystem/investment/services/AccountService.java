@@ -1,6 +1,6 @@
 package br.com.debugsystem.investment.services;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +37,8 @@ public class AccountService {
         account.setBalance(accountRequest.getBalance());
         account.setBalanceMonthlyApportOnly(accountRequest.getBalanceMonthlyApportOnly());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String currentDate = LocalDate.now().format(formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm:ss.SSS");
+        String currentDate = LocalDateTime.now().format(formatter);
         account.setDtOpening(currentDate);
         account.setClient(accountRequest.getClient());
         accountRepository.save(account);
