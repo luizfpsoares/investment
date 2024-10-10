@@ -1,0 +1,38 @@
+{
+    "name": "Active One",
+    "code": "ACTV1F",
+    "accountType": "STANDARD"
+}
+
+
+{
+    "name": "Luiz Fernando",
+    "surname": "Pinangé Soares",
+    "cpf": "03050571110",
+    "dateOfBirth": "05/02/1998",
+    "email": "luiz@gmail.com",
+    "password": "senha"
+}
+
+
+{
+    "type": "STANDARD",
+    "balance": 0.0,
+    "balanceMonthlyApportOnly": 0.0,
+    "client": {
+        "id": 1
+    }
+}
+
+
+{
+    "purchasePrice": 4.90,
+    "quantity": 3,
+    "originAport": "MONTHLY",
+    "active": {
+        "id": 1
+    },
+    "account": {
+        "id": 1
+    }
+}
