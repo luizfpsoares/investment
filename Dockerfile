@@ -1,4 +1,4 @@
-FROM openjdk:17-jre-alpine
+FROM openjdk:17-jdk-alpine
 WORKDIR /opt/app
 RUN apk update && apk add --no-cache tzdata
 ENV TZ=America/Sao_Paulo
